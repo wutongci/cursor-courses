@@ -1,2 +1,1 @@
-# cursor-courses
-关于Cursor 教学课程
+# 使用Cursor 开发提升效率的技巧
