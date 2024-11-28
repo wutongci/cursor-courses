@@ -358,5 +358,5 @@
 如有问题或建议，请通过以下方式联系：
 
 - 提交 Issue
-- 发送邮件至 [your-email@example.com]
-- 在 Twitter 上关注 [@your-twitter-handle]
+- 发送邮件至 [wutongci@gmail.com](mailto:wutongci@gmail.com]
+- 在 X.com 上关注 [@cosohuang] (https://x.com/cosohuang)
