@@ -78,7 +78,9 @@
 
 ## 作者
 
-本课程由Codeium工程团队设计开发，致力于帮助开发者更好地利用AI工具提升开发效率。
+- 作者：Cosohuang
+- 邮箱：[wutongci@gmail.com](mailto:wutongci@gmail.com)
+- X.com：[@cosohuang](https://x.com/cosohuang)
 
 ## 许可证
 
