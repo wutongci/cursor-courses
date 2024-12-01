@@ -118,15 +118,6 @@
 
 十余年开发经验，经历过从初创到大厂的不同场景，深知开发者的痛点。这本教程就是希望把这些年积累的经验和技巧，以轻松愉快的方式分享给大家。
 
-## 加入讨论
-
-欢迎加入我们的学习社区，一起探讨现代开发之道：
-
-- 💬 [GitHub Discussions](https://github.com/your-repo/discussions)
-- 📝 [开发者博客](https://your-blog.com)
-- 📱 微信公众号：现代开发者日记
-
-让我们一起让编程变得更轻松、更有趣！
 
 ## 技术栈
 
@@ -137,6 +128,29 @@
 - 测试框架：Pytest
 - 部署工具：Docker, Kubernetes
 - 监控工具：Prometheus, Grafana
+
+## 学习建议
+
+1. 循序渐进
+   - 先完成基础篇打好基础
+   - 理解每个概念后再进入下一章
+   - 动手实践每个案例
+
+2. 实战为主
+   - 跟随项目案例动手编码
+   - 尝试修改和扩展功能
+   - 解决实际开发问题
+
+3. 持续学习
+   - 关注AI技术发展
+   - 实践新的开发方法
+   - 分享学习经验
+
+## 作者
+
+- 作者：Cosohuang
+- 邮箱：[wutongci@gmail.com](mailto:wutongci@gmail.com)
+- X.com：[@cosohuang](https://x.com/cosohuang)
 
 ## 许可证
 
