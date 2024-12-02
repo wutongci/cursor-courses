@@ -18,6 +18,39 @@
 
 最重要的是，测试驱动开发特别适合AI辅助开发的场景。因为AI最擅长的就是根据明确的规则和示例来工作，而测试用例恰恰提供了这样的明确指导。
 
+### 测试用例引导开发流程图
+
+```mermaid
+graph TD;
+    A((测试用例引导开发))
+    subgraph 测试用例
+        B[编写测试用例]
+        C[测试用例评审]
+        D[测试用例执行]
+    end
+    subgraph 开发过程
+        E[编写功能代码]
+        F[代码重构]
+        G[代码评审]
+    end
+    A --> B
+    A --> E
+    B -->|验证需求| C
+    C -->|反馈| D
+    D -->|测试结果| E
+    E -->|实现功能| F
+    F -->|优化代码| G
+    G -->|反馈| B
+    style B fill:#f9f,stroke:#333,stroke-width:2px;
+    style C fill:#f9f,stroke:#333,stroke-width:2px;
+    style D fill:#f9f,stroke:#333,stroke-width:2px;
+    style E fill:#bbf,stroke:#333,stroke-width:2px;
+    style F fill:#bfb,stroke:#333,stroke-width:2px;
+    style G fill:#ffb,stroke:#333,stroke-width:2px;
+```
+
+通过这个流程图，您可以看到如何通过测试用例来引导AI开发，确保开发过程中的每个阶段都得到验证和优化。
+
 ## 1.1 测试驱动开发基础
 
 ### 1.1.1 TDD的核心原则
