@@ -55,15 +55,20 @@ flowchart TD
 - 交替进行：通过不断的平衡调节，确保代码质量和一致性
 2. 层次化项目结构
 系统通过构建层次化的项目树T来管理代码生成：
+
+```
 T = (M, {Di}ni=1)
+```
 其中：
 - M：代表主代码（根节点）
 - {Di}：表示依赖文件（子节点）
 - n：依赖文件的数量
 3. 数学化的生成过程
 生成过程由两个核心函数驱动：
+```
 M(t+1) = f(T, {D(t)i}ni=1)
 D(t+1)i = g(M(t+1), {D(t)j}nj≠i)
+```
 这种数学化的表达确保了生成过程的严谨性和可控性。
 创新性工作流程
 4. 智能初始化
@@ -163,7 +168,7 @@ AI应用开发者如何利用这一机制？
 
 ## 项目概述
 
-Chat模块是我们系统中的核心组件，负责处理实时通讯、智能对话和客户服务。基于IBM研究团队提出的跷跷板生成机制（See-Saw Generative Mechanism），我们采用创新的开发方法来提升开发效率和代码质量。
+Chat模块是我团队的一个核心功能，负责处理实时通讯、智能对话和客户服务。基于IBM研究团队提出的跷跷板生成机制（See-Saw Generative Mechanism），我们采用创新的开发方法来提升开发效率和代码质量。
 
 ### 核心功能
 
@@ -200,8 +205,8 @@ Chat模块是我们系统中的核心组件，负责处理实时通讯、智能�
 ### 技术架构
 
 1. 后端服务
-- Laravel 11.0框架
-- PHP 8.2+
+- Flask 2.2框架
+- Python 3.10+
 - WebSocket服务器
 - Redis消息队列
 
@@ -230,49 +235,51 @@ Chat模块是我们系统中的核心组件，负责处理实时通讯、智能�
 #### 主代码(M)定位
 
 1. 控制器层
-php
+
+```python
 Controllers/
-  - ChatController.php      // 核心会话控制
-  - MessageController.php   // 消息处理
-  - UserController.php      // 用户管理
-  - DialogflowController.php // AI集成
+    - chat_controller.py      # 核心会话控制
+    - message_controller.py   # 消息处理
+    - user_controller.py      # 用户管理
+    - dialogflow_controller.py # AI集成
+```
 
 2. 服务层
-```php
+```python
 Services/
-  - ChatService.php        // 会话核心服务
-  - MessageService.php     // 消息处理服务
-  - UserService.php        // 用户管理服务
-  - DialogflowService.php  // AI对话服务
+    - chat_service.py        # 会话核心服务
+    - message_service.py     # 消息处理服务
+    - user_service.py        # 用户管理服务
+    - dialogflow_service.py  # AI对话服务
 ```
 
 3. 领域层
-```php
+```python
 Domain/
-  - Entities/             // 领域实体
-  - Repositories/         // 数据仓储
-  - Services/            // 领域服务
-  - Events/              // 领域事件
+    - entities/             # 领域实体
+    - repositories/         # 数据仓储
+    - services/            # 领域服务
+    - events/              # 领域事件
 ```
 
 #### 依赖(Di)识别
 
 1. 基础设施
-```php
+```python
 Infrastructure/
-  - WebSocket/           // WebSocket服务
-  - Queue/              // 消息队列
-  - Cache/              // 缓存服务
-  - Search/             // 搜索服务
+    - websocket/           # WebSocket服务
+    - queue/              # 消息队列
+    - cache/              # 缓存服务
+    - search/             # 搜索服务
 ```
 
 2. 外部服务
-```php
+```python
 External/
-  - Dialogflow/         // Dialogflow集成
-  - OpenAI/            // ChatGPT集成
-  - Email/             // 邮件服务
-  - SMS/               // 短信服务
+    - dialogflow/         # Dialogflow集成
+    - openai/            # ChatGPT集成
+    - email/             # 邮件服务
+    - sms/               # 短信服务
 ```
 
 ### B. 生成策略
@@ -280,55 +287,57 @@ External/
 #### See阶段（主代码生成）
 
 1. 控制器层生成
-```php
-class ChatController extends Controller 
-{
-    private ChatService $chatService;
-    private UserService $userService;
+```python
+from dataclasses import dataclass
+from typing import Any
+
+class ChatController:
+    def __init__(self, chat_service, user_service):
+        self.chat_service = chat_service
+        self.user_service = user_service
     
-    public function handleMessage(Request $request)
-    {
-        // 消息处理逻辑
-    }
-}
+    def handle_message(self, request: Any) -> None:
+        # 消息处理逻辑
+        pass
 ```
 
 2. 服务层生成
-```php
-class ChatService
-{
-    private MessageRepository $messageRepo;
-    private DialogflowService $dialogflow;
+```python
+class ChatService:
+    def __init__(self, message_repo, dialogflow):
+        self.message_repo = message_repo
+        self.dialogflow = dialogflow
     
-    public function processMessage(Message $message)
-    {
-        // 消息处理核心逻辑
-    }
-}
+    def process_message(self, message: 'Message') -> None:
+        # 消息处理核心逻辑
+        pass
 ```
 
 #### Saw阶段（依赖生成）
 
 1. 仓储层生成
-```php
-class MessageRepository implements MessageRepositoryInterface
-{
-    public function save(Message $message)
-    {
-        // 数据持久化逻辑
-    }
-}
+```python
+from abc import ABC, abstractmethod
+
+class MessageRepositoryInterface(ABC):
+    @abstractmethod
+    def save(self, message: 'Message') -> None:
+        pass
+
+class MessageRepository(MessageRepositoryInterface):
+    def save(self, message: 'Message') -> None:
+        # 数据持久化逻辑
+        pass
 ```
 
 2. 外部服务集成
-```php
-class DialogflowService
-{
-    public function detectIntent(string $text)
-    {
-        // 意图识别逻辑
-    }
-}
+```python
+@dataclass
+class Message:
+    id: str
+    content: str
+    type: str
+    status: str
 ```
 
 ### C. 实践建议
@@ -364,22 +373,12 @@ graph TB
 
 #### 依赖注入管理
 
-```php
-// 服务提供者
-class ChatServiceProvider extends ServiceProvider
-{
-    public function register()
-    {
-        $this->app->bind(
-            MessageRepositoryInterface::class,
-            MessageRepository::class
-        );
-        
-        $this->app->singleton(AIService::class, function ($app) {
-            return new AIService(config('services.openai.key'));
-        });
-    }
-}
+```python
+# 服务提供者
+class ChatServiceProvider:
+    def register(self):
+        # 注册服务
+        pass
 ```
 
 ### D. 优化建议
@@ -387,60 +386,48 @@ class ChatServiceProvider extends ServiceProvider
 #### 接口定义优先
 
 1. 定义清晰的服务接口
-```php
-interface MessageServiceInterface
-{
-    public function sendMessage(string $content, int $userId): Message;
-    public function processIncoming(array $payload): void;
-}
+```python
+interface MessageServiceInterface:
+    def send_message(self, content: str, user_id: int) -> 'Message':
+        pass
+    def process_incoming(self, payload: dict) -> None:
+        pass
 ```
 
 2. 设计稳定的数据契约
-```php
-interface MessageRepositoryInterface
-{
-    public function findById(int $id): ?Message;
-    public function save(Message $message): void;
-}
+```python
+interface MessageRepositoryInterface:
+    def find_by_id(self, id: int) -> 'Message':
+        pass
+    def save(self, message: 'Message') -> None:
+        pass
 ```
 
 #### 测试驱动开发
 
 1. 单元测试
-```php
-class MessageServiceTest extends TestCase
-{
-    public function test_can_send_message()
-    {
-        // 测试消息发送逻辑
-    }
-}
+```python
+class MessageServiceTest:
+    def test_can_send_message(self):
+        # 测试消息发送逻辑
+        pass
 ```
 
 2. 集成测试
-```php
-class ChatControllerTest extends TestCase
-{
-    public function test_can_handle_incoming_message()
-    {
-        // 测试消息处理流程
-    }
-}
+```python
+class ChatControllerTest:
+    def test_can_handle_incoming_message(self):
+        # 测试消息处理流程
+        pass
 ```
 
 #### 文档生成
 
 1. API文档
-```php
-/**
- * @api {post} /api/chat/message 发送消息
- * @apiName SendMessage
- * @apiGroup Chat
- * @apiVersion 1.0.0
- *
- * @apiParam {String} content 消息内容
- * @apiParam {Integer} userId 用户ID
- */
+```python
+"""
+API文档
+"""
 ```
 
 3. 可靠性提升
@@ -456,7 +443,7 @@ class ChatControllerTest extends TestCase
 基于跷跷板机制的See阶段：
 
 1. 项目结构初始化
-   - 遵循Laravel模块化规范
+   - 遵循Flask模块化规范
    - 建立领域驱动的目录结构
    - 配置基础依赖
 
@@ -591,140 +578,84 @@ A:
 
 生成的代码示例：
 
-```php
-final class Message
-{
-    private MessageId $id;
-    private MessageContent $content;
-    private MessageType $type;
-    private MessageStatus $status;
-    private UserId $senderId;
-    private ConversationId $conversationId;
-    private DateTimeImmutable $createdAt;
+```python
+from dataclasses import dataclass
+from typing import Any
+
+@dataclass
+class Message:
+    id: str
+    content: str
+    type: str
+    status: str
+    sender: str
+    conversation: str
+    created_at: str
     
-    private function __construct(
-        MessageId $id,
-        MessageContent $content,
-        MessageType $type,
-        UserId $senderId,
-        ConversationId $conversationId
-    ) {
-        $this->id = $id;
-        $this->content = $content;
-        $this->type = $type;
-        $this->status = MessageStatus::Created;
-        $this->senderId = $senderId;
-        $this->conversationId = $conversationId;
-        $this->createdAt = new DateTimeImmutable();
-    }
+    def send(self) -> None:
+        # 发送消息逻辑
+        pass
     
-    public static function create(
-        MessageContent $content,
-        MessageType $type,
-        UserId $senderId,
-        ConversationId $conversationId
-    ): self {
-        return new self(
-            MessageId::generate(),
-            $content,
-            $type,
-            $senderId,
-            $conversationId
-        );
-    }
+    def recall(self) -> None:
+        # 撤回消息逻辑
+        pass
     
-    public function send(): void
-    {
-        if ($this->status !== MessageStatus::Created) {
-            throw new InvalidMessageStateException('Message already sent');
-        }
-        
-        $this->status = MessageStatus::Sent;
-        $this->raise(new MessageSentEvent($this));
-    }
-    
-    // 其他方法实现...
-}
+    def delete(self) -> None:
+        # 删除消息逻辑
+        pass
 ```
 
 #### 生成应用服务示例
 
 ```plaintext
-请基于以下应用服务定义生成实现代码：
+请基于以下应用场景生成应用服务实现：
 
-服务：ChatApplicationService
-功能：
-1. 创建会话
-2. 发送消息
-3. 获取会话历史
-4. 处理实时通知
+场景：聊天消息处理
+功能要求：
+1. 消息发送和接收
+2. 实时通知
+3. 消息持久化
+4. 离线消息处理
 
-依赖：
-- MessageRepository
-- ConversationRepository
-- NotificationService
-- EventDispatcher
-
-要求：
-1. 使用命令模式
-2. 实现事件驱动
-3. 处理异常情况
-4. 支持事务管理
+请生成：
+1. 应用服务接口
+2. 命令和查询对象
+3. 事件处理器
+4. 外部服务集成
 ```
 
 生成的代码示例：
 
-```php
-final class ChatApplicationService
-{
-    public function __construct(
-        private readonly MessageRepository $messages,
-        private readonly ConversationRepository $conversations,
-        private readonly NotificationService $notifications,
-        private readonly EventDispatcher $events,
-        private readonly TransactionManager $transactions
-    ) {}
+```python
+from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from typing import Any
+
+interface MessageServiceInterface:
+    @abstractmethod
+    def send_message(self, content: str, user_id: int) -> 'Message':
+        pass
+    @abstractmethod
+    def process_incoming(self, payload: dict) -> None:
+        pass
+
+@dataclass
+class SendMessageCommand:
+    content: str
+    user_id: int
+
+class MessageService(MessageServiceInterface):
+    def __init__(self, message_repo, notification_service):
+        self.message_repo = message_repo
+        self.notification_service = notification_service
     
-    public function sendMessage(SendMessageCommand $command): void
-    {
-        $this->transactions->begin();
-        
-        try {
-            // 1. 获取会话
-            $conversation = $this->conversations->findById($command->conversationId());
-            if (!$conversation) {
-                throw new ConversationNotFoundException();
-            }
-            
-            // 2. 创建消息
-            $message = Message::create(
-                new MessageContent($command->content()),
-                MessageType::from($command->type()),
-                $command->senderId(),
-                $conversation->id()
-            );
-            
-            // 3. 保存消息
-            $this->messages->save($message);
-            
-            // 4. 发送通知
-            $this->notifications->notifyParticipants(
-                $conversation,
-                new MessageNotification($message)
-            );
-            
-            // 5. 分发事件
-            $this->events->dispatch(new MessageSentEvent($message));
-            
-            $this->transactions->commit();
-        } catch (Exception $e) {
-            $this->transactions->rollback();
-            throw $e;
-        }
-    }
+    def send_message(self, content: str, user_id: int) -> 'Message':
+        # 发送消息逻辑
+        pass
     
-    // 其他方法实现...
-}
+    def process_incoming(self, payload: dict) -> None:
+        # 处理实时通知逻辑
+        pass
 ```
 
 ### Prompt 优化策略
@@ -808,7 +739,7 @@ final class ChatApplicationService
 用于生成整体架构和核心组件：
 
 ```plaintext
-作为一个 Chat 模块的架构设计专家，请设计一个基于 Laravel 的实时聊天系统：
+作为一个 Chat 模块的架构设计专家，请设计一个基于 Flask 的实时聊天系统：
 
 要求：
 1. 使用领域驱动设计（DDD）思想
@@ -880,10 +811,10 @@ final class ChatApplicationService
 基于以下技术要求，生成基础设施实现：
 
 技术栈：
-- Laravel 11
+- Flask 2.2
+- Python 3.10+
 - WebSocket
 - Redis
-- MySQL
 
 要求：
 1. 实现仓储接口
@@ -897,6 +828,7 @@ final class ChatApplicationService
 3. 缓存服务实现
 4. 日志记录实现
 
+```
 ## 结论
 
 跷跷板生成机制的提出，标志着AI辅助编程领域的一个重要突破。这一创新性的解决方案不仅从理论和实践两个层面解决了大规模代码生成的核心痛点，更为未来的技术发展指明了方向。
