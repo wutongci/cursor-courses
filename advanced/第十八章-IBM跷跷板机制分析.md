@@ -352,7 +352,7 @@ class Message:
 2. 应用层（Application Layer）
    - 应用服务
    - 命令处理器
-   - 事件处��器
+   - 事件处理器
 
 3. 基础设施层（Infrastructure Layer）
    - 数据访问
@@ -870,6 +870,7 @@ class MessageService(MessageServiceInterface):
 4. GitHub - IBM See-Saw Mechanism Reference Implementation
 5. IBM Developer Documentation - See-Saw Mechanism Integration Guide
 6. 示例代码仓库：github.com/ibm/see-saw-examples
+7. [用AI工具生成代码，Token不够，项目割裂，看一下IBM最新的跷跷板机制](https://mp.weixin.qq.com/s/sVB9pbbSjvPl-wu6_eSA1A) - AI修猫Prompt
 
 [回到目录](README.md)
 
