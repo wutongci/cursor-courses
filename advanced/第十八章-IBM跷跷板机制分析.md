@@ -2,7 +2,7 @@
 
 上一章：[第十七章-AI辅助开发注意事项](第十七章-AI辅助开发注意事项.md)
 
-下一章：[第十九章-AI辅助测试实践](第十九章-AI辅助测试实践.md)
+下一章：[第十九章-Cursor结合CodeTree的智能编程实践](第十九章-Cursor结合CodeTree的智能编程实践.md)
 
 # IBM跷跷板机制分析与实践指南
 
@@ -876,4 +876,4 @@ class MessageService(MessageServiceInterface):
 
 上一章：[第十七章-AI辅助开发注意事项](第十七章-AI辅助开发注意事项.md)
 
-下一章：[第十九章-AI辅助测试实践](第十九章-AI辅助测试实践.md)
+下一章：[第十九章-Cursor结合CodeTree的智能编程实践](第十九章-Cursor结合CodeTree的智能编程实践.md)
