@@ -57,7 +57,7 @@ sequenceDiagram
     loop 策略评估循环
         Thinker->>Critic: 提交策略方案
         activate Critic
-        Critic->>Critic: 评估策略可行���
+        Critic->>Critic: 评估策略可行性
         Critic-->>Thinker: 返回评估结果
         deactivate Critic
         
