@@ -820,7 +820,9 @@ CodeTree的价值不仅在于它提供的具体工具和方法，更在于它代
 另外：我们文章中的代码只是demo，实际开发可以结合 https://github.com/appl-team/appl 来实现一个更加强大的智能编程助手。
 
 ## 参考资源
-参考修猫的公众号文章： 
+
+本篇文章主要参考修猫的公众号文章： https://mp.weixin.qq.com/s/-SCsLl2IkdstXFrGWoWM1g
+
 1. 《Clean Code: A Handbook of Agile Software Craftsmanship》
 2. 《Design Patterns: Elements of Reusable Object-Oriented Software》
 3. 《Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation》
