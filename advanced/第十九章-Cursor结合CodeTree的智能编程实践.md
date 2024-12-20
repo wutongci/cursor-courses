@@ -135,7 +135,7 @@ sequenceDiagram
 - 仔细分析代码中的问题
 - 提出有针对性的优化方案
 - 验证优化的效果
-- ���保不会引入新的问题
+- 确保不会引入新的问题
 
 #### 4. Critic Agent：严格的"质量监督员"
 
@@ -811,7 +811,7 @@ class EnhancedTodoSystem(OptimizedTodoSystem):
 
 在软件开发日益复杂的今天，如何提高代码质量、增强开发效率成为每个开发者面临的重要课题。通过本章的探索，我们看到了CodeTree框架在这方面带来的创新性解决方案。
 
-从多智能体协作机制的设计，到树形结构的开发流程管理，再到具体的工程实践，CodeTree为我们展示了一种全新的开发范��。特别是在实战案例中，我们看到了这种方法如何帮助我们构建出高质量的软件系统。
+从多智能体协作机制的设计，到树形结构的开发流程管理，再到具体的工程实践，CodeTree为我们展示了一种全新的开发范式。特别是在实战案例中，我们看到了这种方法如何帮助我们构建出高质量的软件系统。
 
 虽然在实践过程中可能会遇到各种挑战，但通过合理的架构设计、严谨的工程实践和持续的优化改进，这些挑战都是可以克服的。更重要的是，这个过程让我们对软件开发有了更深的理解和更系统的思考。
 
@@ -827,7 +827,7 @@ CodeTree的价值不仅在于它提供的具体工具和方法，更在于它代
 4. 《High Performance Python: Practical Performant Programming for Humans》
 5. 《Architecture Patterns with Python: Enabling Test-Driven Development, Domain-Driven Design, and Event-Driven Microservices》
 
-[回到目���](README.md)
+[回到目录](README.md)
 
 上一章：[第十八章-IBM跷跷板机制分析](第十八章-IBM跷跷板机制分析.md)
 
