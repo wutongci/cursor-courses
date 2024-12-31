@@ -144,7 +144,39 @@
 
 ## 实际应用示例
 
-以下是在跨境物流平台开发中，如何使用规范生成不同类型的产品文档：
+在使用规范生成文档之前，建议先设置以下通用提示词参数：
+
+```markdown
+## 通用参数设置
+文档管理：
+- 存储位置：docs/{项目名称}/{文档类型}/{YYYY-MM-DD}-{文档名称}.md
+- 文档类型分类：
+  - 需求文档：requirements/
+  - 设计文档：design/
+  - 规划文档：planning/
+  - 分析报告：analysis/
+  - 评审文档：review/
+- 版本控制：
+  - 使用语义化版本号：v主版本.次版本.修订号
+  - 变更日志：CHANGELOG.md
+- 文档模板：templates/
+- 资源文件：assets/
+  - 图片：images/
+  - 原型图：prototypes/
+  - 流程图：flowcharts/
+  
+命名规范：
+- 文件名：小写字母、数字、连字符
+- 图片名：{功能模块}-{用途}-{序号}
+- 版本号：v1.0.0
+
+文档关联：
+- 相关文档：在文档开头列出关联文档的相对路径
+- 依赖关系：说明本文档依赖的其他文档
+- 子文档：列出所有子文档的链接
+```
+
+以下是在跨境物流平台开发中的具体应用示例：
 
 ### 1. 功能需求文档生成
 
@@ -152,6 +184,20 @@
 ```
 角色：跨境物流平台产品经理
 任务：设计实时货物追踪功能的产品需求文档
+
+文档信息：
+- 存储路径：docs/logistics-tracking/requirements/2024-03-20-realtime-tracking-spec.md
+- 文档类型：需求文档
+- 版本号：v1.0.0
+- 关联文档：
+  - ../design/2024-03-15-tracking-system-architecture.md
+  - ../analysis/2024-03-10-market-research.md
+
+资源位置：
+- 原型图：assets/prototypes/tracking-system/
+- 流程图：assets/flowcharts/tracking-process/
+- 时序图：assets/sequence/tracking-flow/
+
 要求：
 - 考虑不同运输方式（海运、空运、铁路）的追踪需求
 - 包含各物流节点的状态定义
@@ -159,10 +205,17 @@
 - 提供清晰的数据指标
 - 考虑多语言支持需求
 - 整合各方物流数据
+
 补充信息：
 - 主要用户是货代公司和外贸企业
 - 需要支持集装箱和散货追踪
 - 系统需要对接主要船公司和航空公司的API
+
+文档格式：
+- 使用标准Markdown格式
+- 包含目录导航
+- 图表使用Mermaid语法
+- 代码示例使用代码块
 ```
 
 ### 2. 用户体验优化方案
@@ -171,17 +224,37 @@
 ```
 角色：跨境物流平台产品经理
 任务：优化货物追踪功能的用户体验
+
+文档信息：
+- 存储路径：docs/logistics-tracking/design/2024-03-21-tracking-ux-optimization.md
+- 文档类型：设计文档
+- 版本号：v1.0.0
+- 关联文档：
+  - ../requirements/2024-03-20-realtime-tracking-spec.md
+  - ../analysis/2024-03-18-user-feedback-analysis.md
+
+资源位置：
+- 原型图：assets/prototypes/tracking-ux/
+- 用户旅程：assets/flowcharts/user-journey/
+- 交互设计：assets/interaction/tracking-ui/
+
 关注点：
 - 用户痛点分析
 - 界面交互优化
 - 信息展示层级
 - 操作流程简化
 - 多端适配方案
+
 用户场景：
 - 货代每天需要查看100+票货物状态
 - 客户经常需要分享追踪信息给下游客户
 - 用户需要实时获取异常预警
 - 经常需要导出追踪报告
+
+设计规范：
+- 遵循公司UI设计规范
+- 使用统一的组件库
+- 保持交互一致性
 ```
 
 ### 3. 数据分析需求
