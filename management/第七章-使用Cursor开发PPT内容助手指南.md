@@ -76,10 +76,10 @@
 ### 实际操作示例
 
 1. **规范文件示例**
-![PPT内容生成规范文件示例](manage_cursorrule.png)
+![PPT内容生成规范文件示例](https://raw.githubusercontent.com/wutongci/cursor-courses/main/images/manage_cursorrule.png)
 
 2. **生成内容示例**
-![PPT内容生成结果示例](manage_output.png)
+![PPT内容生成结果示例](https://raw.githubusercontent.com/wutongci/cursor-courses/main/images/manage_output.png)
 
 通过以上示例可以看到，规范文件定义了清晰的角色定位和输入输出格式，生成的内容则严格遵循了规范要求，形成了结构化的PPT内容框架。
 
