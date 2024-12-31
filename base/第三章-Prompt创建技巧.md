@@ -1,5 +1,13 @@
 # 第三章 Prompt 创建技巧
 
+> "巧匠精于工，匠心源于术。" —— 让我们掌握 AI 编程的核心技巧：Prompt 工程。
+
+## 本章目标
+- ✅ 掌握 Prompt 的本质和原理
+- ✅ 学会创建高质量的 Prompt
+- ✅ 熟练运用各种 Prompt 模式
+- ✅ 建立个人的 Prompt 最佳实践
+
 ## 3.1 Prompt 基础概念
 
 ### 3.1.1 什么是 Prompt
@@ -43,249 +51,377 @@ graph TD
 
 ### 3.2.1 核心原则
 
-1. 明确性
-```plaintext
-- 清晰的目标描述
-- 具体的要求说明
-- 明确的约束条件
-- 预期输出格式
-```
+1. **明确性**
+   - 清晰的目标描述
+   - 具体的要求说明
+   - 明确的约束条件
+   - 预期输出格式
 
-2. 完整性
-```plaintext
-- 必要的上下文信息
-- 相关的业务规则
-- 技术要求和限制
-- 错误处理预期
-```
+2. **完整性**
+   - 必要的上下文信息
+   - 相关的业务规则
+   - 技术要求和限制
+   - 错误处理预期
 
-3. 结构化
-```plaintext
-- 逻辑层次分明
-- 信息组织有序
-- 重点突出
-- 易于理解和修改
-```
+3. **结构化**
+   - 逻辑层次分明
+   - 信息组织有序
+   - 重点突出
+   - 易于理解和修改
 
-### 3.2.2 常见错误
+### 3.2.2 常见错误与解决方案
 
 ```mermaid
 graph TD
-    A[Prompt错误] --> B[模糊不清]
+    A[常见错误] --> B[模糊不清]
     A --> C[信息不足]
     A --> D[结构混乱]
     A --> E[冗余过多]
     
-    B --> F[导致理解偏差]
-    C --> G[生成不完整]
-    D --> H[效率降低]
-    E --> I[干扰重点]
+    B --> F[明确需求和边界]
+    C --> G[补充必要上下文]
+    D --> H[使用模板组织]
+    E --> I[精简关键信息]
 ```
 
-## 3.3 Prompt 模式
+## 3.3 Prompt 模式与实战
 
-### 3.3.1 基础模式
+### 3.3.1 基础模式示例
 
-1. 任务描述模式
+1. **任务描述模式**
 ```plaintext
-[任务类型]：具体要完成的任务
-[输入说明]：输入数据的格式和要求
-[输出要求]：期望的输出格式和标准
-[约束条件]：需要遵守的规则和限制
+# 功能实现请求
+任务类型：实现用户注册功能
+技术栈：Node.js + Express + MongoDB
+安全要求：
+- 密码需要加密存储
+- 邮箱验证
+- 防止SQL注入
+
+输出要求：
+1. 完整的接口实现
+2. 数据验证逻辑
+3. 错误处理机制
+4. API文档
 ```
 
-2. 角色扮演模式
+2. **角色扮演模式**
 ```plaintext
-[场景描述]：开发环境和背景
-[角色定位]：AI需要扮演的角色
-[任务目标]：需要完成的具体工作
-[交互方式]：期望的协作模式
+# 代码审查场景
+角色：高级后端工程师
+任务：审查用户认证模块
+关注点：
+- 代码质量和规范
+- 安全性问题
+- 性能优化空间
+- 可维护性建议
+
+输出格式：
+1. 问题清单
+2. 改进建议
+3. 代码示例
 ```
 
-### 3.3.2 高级模式
+### 3.3.2 高级模式实践
 
-1. 迭代优化模式
-```plaintext
-[初始需求]：基本功能描述
-[优化方向]：需要改进的方面
-[性能要求]：性能指标和目标
-[质量标准]：代码质量要求
+1. **迭代优化模式**
+```python
+# 第一轮：基础功能实现
+def process_data(data):
+    result = []
+    for item in data:
+        if item > 0:
+            result.append(item * 2)
+    return result
+
+# 优化提示：
+"""
+请优化上述代码，要求：
+1. 使用列表推导式提高简洁性
+2. 添加类型提示增强可读性
+3. 加入参数验证提高健壮性
+4. 补充文档字符串
+"""
+
+# 优化后的代码
+from typing import List, Union
+from numbers import Number
+
+def process_data(data: List[Union[int, float]]) -> List[Union[int, float]]:
+    """
+    处理数值列表，将大于0的元素翻倍。
+    
+    Args:
+        data: 输入的数值列表
+        
+    Returns:
+        处理后的数值列表
+        
+    Raises:
+        TypeError: 当输入的不是数值列表时
+    """
+    if not all(isinstance(x, Number) for x in data):
+        raise TypeError("所有元素必须是数值类型")
+    return [item * 2 for item in data if item > 0]
 ```
 
-2. 问题诊断模式
-```plaintext
-[问题描述]：当前遇到的问题
-[环境信息]：开发环境详情
-[错误信息]：具体的错误提示
-[期望结果]：预期的解决方案
+2. **问题诊断模式**
+```python
+# 问题场景：内存泄漏
+"""
+问题描述：
+- Web服务器运行48小时后内存占用持续增长
+- 重启后恢复正常
+- 日志中无错误信息
+
+环境信息：
+- Python 3.8
+- Django 3.2
+- Redis 作为缓存
+- Ubuntu 20.04
+
+诊断需求：
+1. 可能的原因分析
+2. 排查方案建议
+3. 解决方案建议
+4. 预防措施建议
+"""
+
+# 解决方案示例
+import gc
+import weakref
+from typing import Dict, Any
+
+class CacheManager:
+    def __init__(self):
+        self._cache: Dict[str, Any] = {}
+        self._ref_count = weakref.WeakValueDictionary()
+    
+    def set(self, key: str, value: Any) -> None:
+        self._cache[key] = value
+        self._ref_count[key] = value
+    
+    def cleanup(self) -> None:
+        # 手动触发垃圾回收
+        gc.collect()
+        # 清理无引用的缓存
+        for key in list(self._cache.keys()):
+            if key not in self._ref_count:
+                del self._cache[key]
 ```
 
-## 3.4 场景化 Prompt 示例
+## 3.4 实战场景示例
 
 ### 3.4.1 代码生成场景
 
-1. 功能实现
+1. **RESTful API 实现**
 ```plaintext
-任务：实现用户认证功能
+任务：实现用户管理 API
 要求：
-- 使用 JWT 进行身份验证
-- 包含登录和注册接口
-- 实现密码加密存储
-- 添加接口文档注释
+- CRUD 操作
+- JWT 认证
+- 参数验证
+- 错误处理
+- Swagger 文档
 
 技术栈：
-- Node.js + Express
-- MongoDB
-- bcrypt 加密
+- FastAPI
+- PostgreSQL
+- Pydantic
 
 输出要求：
-- 完整的代码实现
-- API 接口说明
-- 错误处理逻辑
+1. 路由定义
+2. 模型设计
+3. 业务逻辑
+4. 中间件配置
 ```
 
-2. 性能优化
+2. **前端组件开发**
 ```plaintext
-场景：优化数据库查询性能
-现状：
-- 查询响应时间超过 500ms
-- 数据量约 100万条
-- 未建立索引
+任务：实现数据表格组件
+要求：
+- 支持排序和筛选
+- 分页功能
+- 自定义列渲染
+- 主题定制
+- 响应式设计
 
-目标：
-- 响应时间降至 100ms 以内
-- 优化查询语句
-- 添加适当索引
+技术栈：
+- React + TypeScript
+- Ant Design
+- CSS Modules
 
-约束：
-- 不改变现有API
-- 最小化内存占用
+输出要求：
+1. 组件代码
+2. 类型定义
+3. 样式文件
+4. 使用示例
 ```
 
-### 3.4.2 代码重构场景
+### 3.4.2 代码优化场景
 
-```plaintext
-任务：重构遗留代码
-代码现状：
-- 回调地狱问题
-- 重复代码多
-- 缺乏错误处理
-- 命名不规范
+1. **性能优化**
+```typescript
+// 优化前的代码
+function processLargeArray(data: number[]): number[] {
+    const result = [];
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] > 0) {
+            const processed = data[i] * 2;
+            result.push(processed);
+        }
+    }
+    return result;
+}
 
-目标：
-- 使用 async/await
-- 提取公共函数
-- 添加异常处理
-- 规范化命名
+// 优化提示
+"""
+请优化上述代码，目标：
+1. 提高执行效率
+2. 减少内存占用
+3. 优化可读性
+4. 添加性能监控
+"""
 
-质量要求：
-- 遵循 SOLID 原则
-- 添加单元测试
-- 保持向后兼容
-- 完善文档注释
+// 优化后的代码
+interface PerformanceMetrics {
+    executionTime: number;
+    memoryUsage: number;
+}
+
+function processLargeArray(
+    data: number[],
+    options: { withMetrics?: boolean } = {}
+): number[] | [number[], PerformanceMetrics] {
+    const startTime = performance.now();
+    const startMemory = process.memoryUsage().heapUsed;
+    
+    // 使用 filter 和 map 优化性能
+    const result = data
+        .filter(num => num > 0)
+        .map(num => num * 2);
+    
+    if (options.withMetrics) {
+        const metrics: PerformanceMetrics = {
+            executionTime: performance.now() - startTime,
+            memoryUsage: process.memoryUsage().heapUsed - startMemory
+        };
+        return [result, metrics];
+    }
+    
+    return result;
+}
 ```
 
 ## 3.5 Prompt 优化技巧
 
-### 3.5.1 迭代优化
+### 3.5.1 迭代优化流程
 
 ```mermaid
 graph LR
-    A[初始Prompt] --> B[评估效果]
-    B --> C[识别问题]
-    C --> D[调整优化]
-    D --> B
+    A[编写初始Prompt] --> B[测试响应]
+    B --> C[分析问题]
+    C --> D[优化调整]
+    D --> E[验证效果]
+    E --> F{达到目标?}
+    F -->|是| G[完成]
+    F -->|否| D
 ```
 
-### 3.5.2 上下文管理
+### 3.5.2 上下文管理最佳实践
 
-1. 信息组织
+1. **信息分层**
 ```plaintext
-- 相关性原则
-- 重要性排序
-- 逻辑分层
-- 简洁表达
+# 项目背景
+- 业务领域：电商
+- 项目规模：中型
+- 开发阶段：迭代中
+
+# 技术栈
+- 前端：React + TS
+- 后端：Node.js
+- 数据库：MongoDB
+
+# 具体需求
+[详细描述]
+
+# 约束条件
+[具体限制]
 ```
 
-2. 状态维护
+2. **状态追踪**
 ```plaintext
-- 保持对话连贯
-- 及时更新信息
-- 清理无关内容
-- 控制上下文大小
+# 当前进展
+- 已完成：用户认证
+- 进行中：购物车功能
+- 待开始：订单管理
+
+# 问题记录
+- 性能瓶颈：[描述]
+- 待优化点：[列表]
+
+# 下一步计划
+[具体安排]
 ```
 
 ## 3.6 实践建议
 
-### 3.6.1 提示词库建设
+### 3.6.1 个人提示词库建设
 
 ```mermaid
 mindmap
   root((提示词库))
-    分类管理
-      功能实现
+    基础模板
+      功能开发
       问题诊断
       代码优化
-      测试用例
+    场景分类
+      前端开发
+      后端开发
+      数据处理
     持续优化
       收集反馈
       总结经验
-      更新完善
-    标准化
-      模板定义
-      使用规范
-      最佳实践
+      定期更新
 ```
 
-### 3.6.2 效果评估
+### 3.6.2 效果评估与优化
 
-1. 评估维度
-```plaintext
-- 代码质量
-- 响应准确度
-- 完成时间
-- 可维护性
-```
+1. **评估维度**
+- 代码质量（可读性、可维护性）
+- 执行效率（性能、资源占用）
+- 安全性（漏洞、风险）
+- 可扩展性（架构设计）
 
-2. 优化方向
-```plaintext
+2. **优化方向**
 - 提示词精确度
 - 上下文完整性
-- 交互效率
 - 输出规范性
-```
+- 交互效率
 
-## 3.7 小结
+## 本章小结
 
-本章详细介绍了 Prompt 创建的关键技巧：
+✨ **核心要点**：
+1. 掌握 Prompt 设计原则
+2. 熟练运用各种模式
+3. 建立个人最佳实践
+4. 持续优化和改进
 
-1. 基础概念
-   - Prompt 的定义和重要性
-   - 核心设计原则
+📚 **下一步学习**：
+- 深入研究特定场景
+- 积累实战经验
+- 建立个人知识库
 
-2. 实用模式
-   - 基础模式和高级模式
-   - 场景化示例
+## 扩展资源
 
-3. 优化技巧
-   - 迭代优化方法
-   - 上下文管理策略
+### 推荐阅读
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
+- [Cursor Prompt 最佳实践](https://cursor.sh/docs/prompts)
+- [AI 编程模式](https://patterns.ai)
 
-4. 实践建议
-   - 提示词库建设
-   - 效果评估方法
-
-通过本章的学习，您应该能够：
-- 理解 Prompt 的核心概念
-- 掌握 Prompt 设计原则
-- 运用各种 Prompt 模式
-- 优化和评估 Prompt 效果
-
-在下一章中，我们将探讨基本操作与实践，将这些 Prompt 技巧应用到实际开发中。
+### 练习项目
+- [Prompt 训练营](https://github.com/prompt-engineering)
+- [AI 编程实战](https://github.com/ai-programming)
 
 ---
-[回到目录](Readme.md)
-
-上一章：[第二章-AI编辑器简介](第二章-AI编辑器简介.md)
-
-下一章：[第四章-基本操作与实践](第四章-基本操作与实践.md)
+[下一章：AI辅助重构实践](第四章-AI辅助重构实践.md)
