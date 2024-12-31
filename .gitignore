@@ -56,3 +56,4 @@ logs/
 *.temp
 .cache/
 .obsidian
+.cursorrule
